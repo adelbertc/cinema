@@ -52,6 +52,6 @@ object HittingTimeApplication {
     //slices.foreach(slice => println(slice))
     val producer = system.actorOf(Props(new RandomWalkProducer(myGraph, slices.toList, vertexSubset, hittingTime, outputFilename)), name = "htproducer")
     println("Starting computation...")
-    producer ! PreProduce
+    producer ! PreProduction
   }
 }

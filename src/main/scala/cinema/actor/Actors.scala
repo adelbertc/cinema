@@ -9,6 +9,6 @@ abstract class Director extends SerializableActor
 abstract class Producer extends SerializableActor
 abstract class StuntPerformer extends SerializableActor
 
-case object PreProduce
-case class Action(graphSlice: Vector[Int], subset: Vector[Int])
-case class ActionResult(results: List[Tuple2[Tuple2[Int, Int], Double]])
+case object PreProduction
+case class StartProduction(graphSlice: Vector[Int], subset: Vector[Int])
+case class ProductionResult(results: List[Tuple2[Tuple2[Int, Int], Double]])

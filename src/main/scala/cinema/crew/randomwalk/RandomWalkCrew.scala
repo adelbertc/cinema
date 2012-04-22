@@ -12,7 +12,7 @@ class RandomWalkDirector(myGraph: RandomWalkGraph, metric: (RandomWalkGraph, Int
   var resultBound = 0
 
   def receive = {
-    case Action(graphSlice, subset) =>
+    case StartProduction(graphSlice, subset) =>
       val pGraphSlice = graphSlice.par
       val results = for {
         u <- pGraphSlice
@@ -20,7 +20,7 @@ class RandomWalkDirector(myGraph: RandomWalkGraph, metric: (RandomWalkGraph, Int
       } yield {
         ((u -> v) -> metric(myGraph, u, v))
       }
-      sender ! ActionResult(results.toList)
+      sender ! ProductionResult(results.toList)
   }
 }
 
@@ -34,9 +34,9 @@ class RandomWalkProducer(myGraph: RandomWalkGraph, slices: List[Vector[Int]], su
   var counter = 0
   val htdirectors = context.actorOf(props(myGraph, metric, this.self), name = "rwdirectors")
   def receive = {
-    case PreProduce => 
-      slices.foreach(slice => htdirectors ! Action(slice, subset))
-    case ActionResult(results) =>
+    case PreProduction => 
+      slices.foreach(slice => htdirectors ! StartProduction(slice, subset))
+    case ProductionResult(results) =>
       results.foreach(t => outfile.println(t._1._1 + " " + t._1._2 + " " + t._2 + "\n"))
       counter += 1
       println("Got results for " + counter + "th slice, " + (slices.length - counter) + " remaining...")

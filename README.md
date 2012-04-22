@@ -53,12 +53,12 @@ The Producer gets the process started - it is
 created on the machine that will eventually 
 aggregate all the results. Once the Producer 
 is spawned by  the application and receives the 
-`PreProduce` message, it in turn 
+`PreProduction` message, it in turn 
 spawns (possibly several) Directors on remote 
 machines. The Producer instructs the Directors to 
-work by sending an `Action` message to them. When the 
-Directors are done working on their slice of the 
-graph, they will send an `ActionResult` message to 
+work by sending an `StartProduction` message to them. 
+When the Directors are done working on their slice of the 
+graph, they will send an `ProductionResult` message to 
 the Producer. The Producer will then write the 
 results to an output file.
 
@@ -70,10 +70,10 @@ Currently this is done via Scala 2.9's Parallel
 Collections, but I am working on an alternative
 involving "actual" Actors so that you can restrict
 how many threads to use. A Director begins work when 
-it receives an `Action` message. Once a Director is 
-done with it's slice of the graph, it sends the 
-results back to the Producer via an `ActionResult` 
-message.
+it receives an `StartProduction` message. Once a 
+Director is done with it's slice of the graph, 
+it sends the results back to the Producer via an 
+`ProductionResult` message.
 
 ###Grip
 The Grips are deployed on the remote machines 
