@@ -99,3 +99,10 @@ constructor that takes in an edgelist file. I am
 working on expanding this to allow users to start
 with a mutable graph and later on turn it into an
 immutable graph.
+
+##License
+Copyright (c) 2012 Adelbert Chang
+
+Licensed under the 
+[MIT License](http://www.opensource.org/licenses/MIT).
+Please refer to LICENSE for more details.
