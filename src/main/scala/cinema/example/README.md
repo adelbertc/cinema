@@ -6,6 +6,14 @@ I will be adding a `Crew` for `immutable.UndirectedGraph`
 soon.
 
 ##Instructions
+This example will provide a short walkthrough on how
+to distribute a hitting time calculation algorithm.
+Hitting time is defined as the expected length of a random
+walk from some vertex `u` to some other vertex `v` in
+the graph. In this example, we calculate this by average
+the lengths of 2000 (represented by `RandomWalkGraph.RWLOOP`)
+such random walks.
+
 1. Create a new Scala program with a `main` method.
 
 ```scala
