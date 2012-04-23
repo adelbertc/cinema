@@ -67,7 +67,7 @@ object HittingTimeApplication {
 
   def main(args: Array[String]) {
     if (args.length != 4) {
-    println("Usage: scala HittingTimeApplication <edgelist> <subset cardinality> <output filename> <# of servers>")
+      println("Usage: scala HittingTimeApplication <edgelist> <subset cardinality> <output filename> <# of servers>")
       return
     }
     val G = new RandomWalkGraph(args(0), parallel = true)
