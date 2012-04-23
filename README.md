@@ -24,6 +24,9 @@ Cinema is a work-in-progress and is not guarenteed
 to be fully stable. Please report any bugs, comments,
 or suggestions to me at: `adelbertc at gmail dot com`
 
+An introductory tutorial on using Cinema can be found
+[here](https://github.com/adelbertc/Cinema/tree/master/src/main/scala/cinema/example).
+
 ##Compiling
 Cinema requires Scala 2.9 and Akka 2.0. I suggest
 downloading the [Typesafe Stack](http://typesafe.com/) and using the Simple

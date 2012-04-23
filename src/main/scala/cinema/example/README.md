@@ -8,9 +8,11 @@ soon.
 ##Instructions
 1. Create a new Scala program with a `main` method.
 
-    <pre><code>object HittingTimeApp {
-      def main(args: Array[String])
-    }</code></pre>
+```scala
+object HittingTimeApp {
+  def main(args: Array[String])
+}
+```
 
 2. Import `import cinema.crew.randomwalk._` and
 `import cinema.graph.immutable.RandomWalkGraph` to
@@ -18,19 +20,21 @@ get the necessary objects and classes.
 
 3. Implement the algorithm as a method inside the object.
 
-    <pre><code>def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
-      var ret = 0
-      var i = 0
-      while (i != RandomWalkGraph.RWLOOP) {
-        var walker = u
-        while (walker != v) {
-          walker = myGraph.randomNeighbor(walker)
-          ret += 1
-        }
-        i += 1
-      }
-      ret / RandomWalkGraph.RWLOOP
-    }</code></pre>
+```scala
+def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
+  var ret = 0
+  var i = 0
+  while (i != RandomWalkGraph.RWLOOP) {
+    var walker = u
+    while (walker != v) {
+      walker = myGraph.randomNeighbor(walker)
+      ret += 1
+    }
+    i += 1
+  }
+  ret / RandomWalkGraph.RWLOOP
+}
+```
     
 4. Inside the `main` method, call the `calculate` method 
 inside the `RandomWalkApp` object (found in 
@@ -40,35 +44,37 @@ the metric implementation, the output filename, and the
 number of servers to deploy over. Below is what the entire 
 program should look like.
 
-    <pre><code>package cinema.example.hittingtime
+```scala
+package cinema.example.hittingtime
 
-    import cinema.crew.randomwalk._
-    import cinema.graph.immutable.RandomWalkGraph
+import cinema.crew.randomwalk._
+import cinema.graph.immutable.RandomWalkGraph
 
-    object HittingTimeApplication {
-      def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
-        var ret = 0
-        var i = 0
-        while (i != RandomWalkGraph.RWLOOP) {
-          var walker = u
-          while (walker != v) {
-            walker = myGraph.randomNeighbor(walker)
-            ret += 1
-          }
-          i += 1
-        }
-        ret / RandomWalkGraph.RWLOOP
+object HittingTimeApplication {
+  def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
+    var ret = 0
+    var i = 0
+      while (i != RandomWalkGraph.RWLOOP) {
+      var walker = u
+      while (walker != v) {
+        walker = myGraph.randomNeighbor(walker)
+        ret += 1
       }
+      i += 1
+    }
+    ret / RandomWalkGraph.RWLOOP
+  }
 
-      def main(args: Array[String]) {
-        if (args.length != 4) {
-          println("Usage: scala HittingTimeApplication <edgelist> <subset cardinality> <output filename> <# of servers>")
-          return
-        }
-        val G = new RandomWalkGraph(args(0), parallel = true)
-        RandomWalkApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
-      }
-    }</code></pre>
+  def main(args: Array[String]) {
+    if (args.length != 4) {
+    println("Usage: scala HittingTimeApplication <edgelist> <subset cardinality> <output filename> <# of servers>")
+      return
+    }
+    val G = new RandomWalkGraph(args(0), parallel = true)
+    RandomWalkApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
+  }
+}
+```
     
 5. Edit the `application.conf` file found in `src/main/resources/` 
 where the comments indicate. If you are deploying on a local machine 
