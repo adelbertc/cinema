@@ -80,3 +80,8 @@ deploying to (I recommend using a script to automate this).
 
 7. Once each Grip is successfully deployed, run the application and 
 watch the CPU usage on each machine ramp up!
+
+8. Once you are done, remember to stop the `Grip`
+application on each machine - they will not stop
+themselves as they are separate from the computation
+process.
