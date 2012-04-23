@@ -14,7 +14,7 @@ the graph. In this example, we calculate this by average
 the lengths of 2000 (represented by `RandomWalkGraph.RWLOOP`)
 such random walks.
 
-1. Create a new Scala program with a `main` method.
+* Create a new Scala program with a `main` method.
 
 ```scala
 object HittingTimeApp {
@@ -22,11 +22,11 @@ object HittingTimeApp {
 }
 ```
 
-2. Import `import cinema.crew.randomwalk._` and
+* Import `import cinema.crew.randomwalk._` and
 `import cinema.graph.immutable.RandomWalkGraph` to
 get the necessary objects and classes.
 
-3. Implement the algorithm as a method inside the object.
+* Implement the algorithm as a method inside the object.
 
 ```scala
 def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
@@ -44,7 +44,7 @@ def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
 }
 ```
     
-4. Inside the `main` method, call the `calculate` method 
+* Inside the `main` method, call the `calculate` method 
 inside the `RandomWalkApp` object (found in 
 `cinema.crew.randomwalk`) with the arguments: 
 `RandomWalkGraph`, number of vertices in graph to consider, 
@@ -84,18 +84,18 @@ object HittingTimeApp {
 }
 ```
     
-5. Edit the `application.conf` file found in `src/main/resources/` 
+* Edit the `application.conf` file found in `src/main/resources/` 
 where the comments indicate. If you are deploying on a local machine 
 via the loopback address, make sure to modify the `Grip` program in 
 `cinema.crew` to set the hostname to `127.0.0.1`
 
-6. Compile the project and run `Grip`s on each machine you will be 
+* Compile the project and run `Grip`s on each machine you will be 
 deploying to (I recommend using a script to automate this).
 
-7. Once each Grip is successfully deployed, run the application and 
+* Once each Grip is successfully deployed, run the application and 
 watch the CPU usage on each machine ramp up!
 
-8. Once you are done, remember to stop the `Grip`
+* Once you are done, remember to stop the `Grip`
 application on each machine - they will not stop
 themselves as they are separate from the computation
 process.
