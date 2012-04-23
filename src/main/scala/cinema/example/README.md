@@ -54,7 +54,7 @@ object HittingTimeApplication {
   def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
     var ret = 0
     var i = 0
-      while (i != RandomWalkGraph.RWLOOP) {
+    while (i != RandomWalkGraph.RWLOOP) {
       var walker = u
       while (walker != v) {
         walker = myGraph.randomNeighbor(walker)
