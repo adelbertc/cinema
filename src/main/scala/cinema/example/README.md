@@ -58,7 +58,7 @@ package cinema.example.hittingtime
 import cinema.crew.randomwalk._
 import cinema.graph.immutable.RandomWalkGraph
 
-object HittingTimeApplication {
+object HittingTimeApp {
   def hittingTime(myGraph: RandomWalkGraph, u: Int, v: Int): Double = {
     var ret = 0
     var i = 0
