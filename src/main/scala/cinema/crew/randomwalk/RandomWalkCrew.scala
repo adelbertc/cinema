@@ -37,7 +37,7 @@ class RandomWalkProducer(myGraph: RandomWalkGraph, slices: List[Vector[Int]], su
     case PreProduction => 
       slices.foreach(slice => htdirectors ! StartProduction(slice, subset))
     case ProductionResult(results) =>
-      results.foreach(t => outfile.println(t._1._1 + " " + t._1._2 + " " + t._2 + "\n"))
+      results.foreach(t => outfile.println(t._1._1 + " " + t._1._2 + " " + t._2))
       counter += 1
       println("Got results for " + counter + "th slice, " + (slices.length - counter) + " remaining...")
       if (counter == slices.length) {
