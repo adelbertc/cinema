@@ -6,7 +6,7 @@ import com.typesafe.config.ConfigFactory
 import java.net.InetAddress
 
 
-class Grip extends Bootable {
+class GraphGrip extends Bootable {
   // Akka was giving me problems witht he default .getHostAddress()
   // For some reason, .getHostName() works, so that's why I'm doing this.
   val myHostName = InetAddress.getLocalHost().getHostName()
@@ -28,7 +28,7 @@ class Grip extends Bootable {
   println("Deployed on: " + myHostName)
   val customConf = ConfigFactory.parseString(myConfig)
     
-  val system = ActorSystem("Grip", ConfigFactory.load(customConf))
+  val system = ActorSystem("GraphGrip", ConfigFactory.load(customConf))
 
   def startup() {
   }
@@ -38,9 +38,9 @@ class Grip extends Bootable {
   }
 }
 
-object Grip {
+object GraphGrip {
   def main(args: Array[String]) {
-    new Grip
+    new GraphGrip
     println("Started Grip - waiting for messages...")
   }
 }

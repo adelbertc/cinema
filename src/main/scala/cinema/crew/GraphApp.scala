@@ -1,16 +1,15 @@
-package cinema.crew.randomwalk
+package cinema.crew
 
 import akka.actor._
 import scala.collection.mutable.ListBuffer
 import cinema.actor._
-import cinema.crew.randomwalk._
-import cinema.graph.immutable.RandomWalkGraph
+import cinema.graph.Graph
 
-object RandomWalkApp {
-  def calculate(myGraph: RandomWalkGraph, k: Int, metric: (RandomWalkGraph, Int, Int) => Double, outputFilename: String, numOfServers: Int) {
-    val system = ActorSystem("RandomWalkApplication")
+object GraphApp {
+  def calculate(myGraph: Graph, k: Int, metric: (Graph, Int, Int) => Double, outputFilename: String, numOfServers: Int) {
+    val system = ActorSystem("GraphApplication")
     val vertexSubset = myGraph.getRandomVertices(k)
-  
+
     val slices = new ListBuffer[Vector[Int]]
     val stepSize = k / numOfServers
     var currentStep = 0
@@ -24,7 +23,7 @@ object RandomWalkApp {
       }
       looper += 1
     }
-    val producer = system.actorOf(Props(new RandomWalkProducer(myGraph, slices.toList, vertexSubset, metric, outputFilename)), name = "rwproducer")
+    val producer = system.actorOf(Props(new GraphProducer(myGraph, slices.toList, vertexSubset, metric, outputFilename)), name = "graphproducer")
     println("Starting computation...")
     producer ! PreProduction
   }

@@ -1,8 +1,6 @@
 package cinema.actor
 
 import akka.actor._
-import cinema.graph.Graph
-import cinema.graph.immutable.RandomWalkGraph
 
 abstract class SerializableActor extends Actor with Serializable
 abstract class Director extends SerializableActor 

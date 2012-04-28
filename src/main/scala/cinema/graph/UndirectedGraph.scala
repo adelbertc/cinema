@@ -1,16 +1,18 @@
 package cinema.graph.mutable {
   import scala.collection.mutable
   import scala.io.Source
+  import scala.util.Random
+  import akka.jsr166y.ThreadLocalRandom
   import cinema.graph.Graph
   
-  class UndirectedGraph extends Graph {
+  class UndirectedGraph(parallel: Boolean = true) extends Graph {
     /****************************
             CONSTRUCTORS
     ****************************/
     protected val adjList = new mutable.HashMap[Int, mutable.ArrayBuffer[Int]]
   
-    def this(filename: String) = {
-      this()
+    def this(filename: String, parallel: Boolean = true) = {
+      this(parallel)
       for (line <- Source.fromFile(filename).getLines) {
         val linesplit = line.split(' ')
         addEdge(linesplit(0).toInt, linesplit(1).toInt) 
@@ -64,7 +66,7 @@ package cinema.graph.mutable {
   
     def averageDegree(): Int = adjList.foldLeft(0)(_ + _._2.size) / numberOfVertices
     
-    def slice(k: Int): List[Vector[Int]] = {
+    def slice(k: Int): Vector[Vector[Int]] = {
       val vertices = getVertices
       val slices = new mutable.ListBuffer[Vector[Int]]
       val stepSize = vertices.length / k
@@ -79,20 +81,34 @@ package cinema.graph.mutable {
         }
         looper += 1
       }
-      slices.toList
+      Vector() ++ slices
     }
     
-    override def toString(): String = 
-      "Number of vertices: " + numberOfVertices + "\nNumber of edges: " + numberOfEdges
+    def randomNeighbor(u: Int): Int = 
+      if (parallel)
+        adjList(u)(ThreadLocalRandom.current.nextInt(adjList(u).length))
+      else
+        adjList(u)(Random.nextInt(adjList(u).length))
+    
+    def getRandomVertices(k: Int): Vector[Int] = {
+      val ret = new mutable.HashSet[Int]
+      val vertexSet = getVertices
+      val order = numberOfVertices
+      while (ret.size != order && ret.size != k)
+        ret += vertexSet(Random.nextInt(order))
+      Vector() ++ ret
+    }
   }
 }
 
 package cinema.graph.immutable {
   import scala.collection.mutable
   import scala.io.Source
+  import scala.util.Random
+  import akka.jsr166y.ThreadLocalRandom
   import cinema.graph.Graph
 
-  class UndirectedGraph(filename: String) extends Graph {
+  class UndirectedGraph(filename: String, parallel: Boolean = true) extends Graph {
 
     val tempAdjList = new mutable.HashMap[Int, mutable.ArrayBuffer[Int]]
     for (line <- Source.fromFile(filename).getLines) {
@@ -152,9 +168,21 @@ package cinema.graph.immutable {
       }
       Vector() ++ slices
     }
-
-    override def toString(): String = 
-      "Number of vertices: " + numberOfVertices + "\nNumber of edges: " + numberOfEdges
+    
+    def randomNeighbor(u: Int): Int = 
+      if (parallel)
+        adjList(u)(ThreadLocalRandom.current.nextInt(adjList(u).length))
+      else
+        adjList(u)(Random.nextInt(adjList(u).length))
+    
+    def getRandomVertices(k: Int): Vector[Int] = {
+      val ret = new mutable.HashSet[Int]
+      val vertexSet = getVertices
+      val order = numberOfVertices
+      while (ret.size != order && ret.size != k)
+        ret += vertexSet(Random.nextInt(order))
+      Vector() ++ ret
+    }
   }
 }
 

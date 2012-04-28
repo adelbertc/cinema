@@ -9,7 +9,12 @@ distribute across several machines.
 
 Cinema includes two graph classes (`UndirectedGraph` 
 and `RandomWalkGraph`) and runs on three Actors 
-(`Producer`, `Director`, and `Grip`). 
+(`Producer`, `Director`, and `Grip`).
+
+Cinema includes one graph class (`UndirectedGraph`)
+and runs on three `Actor` subclasses: `GraphProducer`,
+`GraphDirector`, and `GraphGrip`. See below for
+more details.
 
 Currently, only algorithms that take in pairs of 
 vertices and return a floating point or integer 
@@ -93,11 +98,10 @@ separately from the application, so remember to stop
 the process once you are done.
 
 ##Graphs in Cinema
-The graph classes provided in Cinema are 
-`UndirectedGraph` and `RandomWalkGraph`. The latter 
-is an extension of the former. Futhermore, both 
-classes have an immutable and mutable version. 
-Currently the immutable versions only have a single 
+The graph classes provided in Cinema is
+`UndirectedGraph`. The class has both a
+mutable and immutable version. 
+Currently the immutable version only has a single 
 constructor that takes in an edgelist file. I am 
 working on expanding this to allow users to start
 with a mutable graph and later on turn it into an
