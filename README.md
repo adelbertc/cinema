@@ -7,10 +7,6 @@ The end goal is to have graph algorithms that
 are data-parallelizable easy to parallelize and/or 
 distribute across several machines.
 
-Cinema includes two graph classes (`UndirectedGraph` 
-and `RandomWalkGraph`) and runs on three Actors 
-(`Producer`, `Director`, and `Grip`).
-
 Cinema includes one graph class (`UndirectedGraph`)
 and runs on three `Actor` subclasses: `GraphProducer`,
 `GraphDirector`, and `GraphGrip`. See below for
