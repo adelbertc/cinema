@@ -7,6 +7,13 @@ The end goal is to have graph algorithms that
 are data-parallelizable easy to parallelize and/or 
 distribute across several machines.
 
+If your algorithm depends on the graph being
+connected, please ensure beforehand that the
+input graph is indeed connected before running.
+There is currently no mechanism to check if a
+graph is connected - I may add this feature
+in the future.
+
 Cinema includes one graph class (`UndirectedGraph`)
 and runs on three `Actor` subclasses: `GraphProducer`,
 `GraphDirector`, and `GraphGrip`. See below for
