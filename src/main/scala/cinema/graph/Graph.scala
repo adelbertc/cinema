@@ -10,6 +10,9 @@ abstract class Graph extends Serializable {
   def getEdges: Vector[Tuple2[Int, Int]]
   
   def degree(u: Int): Int
+  def outDegree(u: Int): Int
+  def inDegree(u: Int): Int
+  
   def neighbors(u: Int): Vector[Int]
   def averageDegree: Int
   def slice(k: Int): Vector[Vector[Int]]
