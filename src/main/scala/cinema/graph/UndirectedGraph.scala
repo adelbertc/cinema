@@ -61,6 +61,10 @@ package cinema.graph.mutable {
     }
   
     def degree(u: Int): Int = adjList(u) size
+    
+    def outDegree(u: Int): Int = degree(u)
+    
+    def inDegree(u: Int): Int = degree(u)
   
     def neighbors(u: Int): Vector[Int] = Vector() ++ adjList(u)
   
@@ -109,7 +113,9 @@ package cinema.graph.immutable {
   import cinema.graph.Graph
 
   class UndirectedGraph(filename: String, parallel: Boolean = true) extends Graph {
-
+    /****************************
+            CONSTRUCTORS
+    ****************************/
     val tempAdjList = new mutable.HashMap[Int, mutable.ArrayBuffer[Int]]
     for (line <- Source.fromFile(filename).getLines) {
       val linesplit = line.split(' ')
@@ -123,7 +129,10 @@ package cinema.graph.immutable {
       }
     }
     protected val adjList = tempAdjList.mapValues(v => Vector() ++ v).toMap
-
+    
+    /****************************
+              ACCESSORS
+    ****************************/
     def numberOfVertices: Int = adjList size
 
     def hasVertex(u: Int): Boolean = adjList contains u
@@ -146,6 +155,10 @@ package cinema.graph.immutable {
     }
 
     def degree(u: Int): Int = adjList(u) size
+    
+    def outDegree(u: Int): Int = degree(u)
+    
+    def inDegree(u: Int): Int = degree(u)
 
     def neighbors(u: Int): Vector[Int] = Vector() ++ adjList(u)
 
