@@ -59,7 +59,9 @@ the metric implementation, the output filename, and the
 number of servers to deploy over. Below is what the entire 
 program should look like. We use `ProbGraphApp` since we
 want a `List[Int]` of the length of each random walk since
-random walks are non-deterministic.
+random walks are non-deterministic, and we would like
+to keep each result for potential future use. (Note:
+There is a "lossy" example in `LossyHittingTimeApp.scala`)
 
 ```scala
 package cinema.example.hittingtime
