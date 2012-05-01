@@ -23,7 +23,10 @@ Currently, only algorithms that take in pairs of
 vertices and return a floating point or integer 
 value work (i.e. shortest path). This is because most 
 of the algorithms I have dealt with thus far have 
-this property and hence are easily parallelized. 
+this property and hence are easily parallelized.
+Use `ProbGraphCrew` if your algorithm is non-deterministic
+(e.g. random walks), and `GraphCrew` if it is (e.g.
+shortest path).
 If you would like more, please let me know and I'll 
 see what I can do. Or better yet, fork Cinema and add 
 it yourself!
@@ -68,10 +71,9 @@ is spawned by  the application and receives the
 spawns (possibly several) Directors on remote 
 machines. The Producer instructs the Directors to 
 work by sending an `StartProduction` message to them. 
-When the Directors are done working on their slice of the 
-graph, they will send an `ProductionResult` message to 
-the Producer. The Producer will then write the 
-results to an output file.
+As the Director gets results, it forwards them to the
+Producer, who will output the results to get
+live updates on the computation.
 
 ###Director
 Directors are spawned on remote machines by 
@@ -81,10 +83,11 @@ Currently this is done via Scala 2.9's Parallel
 Collections, but I am working on an alternative
 involving "actual" Actors so that you can restrict
 how many threads to use. A Director begins work when 
-it receives an `StartProduction` message. Once a 
-Director is done with it's slice of the graph, 
-it sends the results back to the Producer via an 
-`ProductionResult` message.
+it receives an `StartProduction` message. As a
+director gets results for it's slice of the graph,
+it sends results to the Producer via a `ProductionResult`
+message (or `ProbProductionResult` if the implementation
+is non-deterministic).
 
 ###Grip
 The Grips are deployed on the remote machines 

@@ -9,4 +9,5 @@ abstract class StuntPerformer extends SerializableActor
 
 case object PreProduction
 case class StartProduction(graphSlice: Vector[Int], subset: Vector[Int])
-case class ProductionResult(results: List[Tuple2[Tuple2[Int, Int], Double]])
+case class ProductionResult(u: Int, v: Int, result: Double)
+case class ProbProductionResult(u: Int, v: Int, result: List[Int])

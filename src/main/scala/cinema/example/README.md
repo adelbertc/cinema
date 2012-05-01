@@ -18,7 +18,8 @@ object HittingTimeApp {
 }
 ```
 
-* Import `import cinema.crew._` and
+* Import `scala.collection.mutable.ListBuffer`,
+`import cinema.crew._` and
 `import cinema.graph.immutable.UndirectedGraph` to
 get the necessary objects and classes.
 
@@ -33,28 +34,32 @@ combination of those, so long as they are a sub-class of
 `Graph`.
 
 ```scala
-def hittingTime(myGraph: Graph, u: Int, v: Int): Double = {
-  var ret = 0
+def hittingTime(myGraph: Graph, u: Int, v: Int): List[Int] = {
+  val result = new ListBuffer[Int]
   var i = 0
   while (i != 2000) {
     var walker = u
+    var walkLength = 0
     while (walker != v) {
       walker = myGraph.randomNeighbor(walker)
-      ret += 1
+      walkLength += 1
     }
     i += 1
+    result += walkLength
   }
-  ret / 2000 
+  ret.toList
 }
 ```
-    
+
 * Inside the `main` method, call the `calculate` method 
-inside the `GraphApp` object (found in 
+inside the `ProbGraphApp` object (found in 
 `cinema.crew`) with the arguments: 
 `Graph`, number of vertices in graph to consider, 
 the metric implementation, the output filename, and the 
 number of servers to deploy over. Below is what the entire 
-program should look like.
+program should look like. We use `ProbGraphApp` since we
+want a `List[Int]` of the length of each random walk since
+random walks are non-deterministic.
 
 ```scala
 package cinema.example.hittingtime
@@ -63,27 +68,29 @@ import cinema.crew._
 import cinema.graph.immutable.UndirectedGraph
 
 object HittingTimeApp {
-  def hittingTime(myGraph: Graph, u: Int, v: Int): Double = {
-    var ret = 0
+  def hittingTime(myGraph: Graph, u: Int, v: Int): List[Int] = {
+    val result = new ListBuffer[Int]
     var i = 0
     while (i != 2000) {
       var walker = u
+      var walkLength = 0
       while (walker != v) {
         walker = myGraph.randomNeighbor(walker)
-        ret += 1
+        walkLength += 1
       }
       i += 1
+      result += walkLength
     }
-    ret / 2000
+    walkLength.toList
   }
 
   def main(args: Array[String]) {
     if (args.length != 4) {
-      println("Usage: scala HittingTimeApplication <edgelist> <subset cardinality> <output filename> <# of servers>")
+      println("Usage: scala HittingTimeApplication [edgelist] [subset cardinality] [output filename] [# of servers]")
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
-    GraphApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
+    ProbGraphApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
   }
 }
 ```
