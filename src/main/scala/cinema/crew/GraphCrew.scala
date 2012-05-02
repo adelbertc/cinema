@@ -30,7 +30,7 @@ class GraphProducer(myGraph: Graph, slices: List[Vector[Int]], subset: Vector[In
     case ProductionResult(u, v, value) => 
       outfile.println(u + " " + v + " " + value)
       counter += 1
-      if (counter == (subset.length * subset.length)) {
+      if (counter == slices.length) {
         outfile.close()
         context.system.shutdown()
       }
