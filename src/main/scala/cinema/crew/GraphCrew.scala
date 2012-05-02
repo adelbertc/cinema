@@ -23,10 +23,10 @@ class GraphProducer(myGraph: Graph, slices: List[Vector[Int]], subset: Vector[In
   import GraphProducer.props
   val outfile = new PrintWriter(outputFilename)
   var counter = 0
-  val htdirectors = context.actorOf(props(myGraph, metric), name = "graphdirectors")
+  val graphdirectors = context.actorOf(props(myGraph, metric), name = "graphdirectors")
   def receive = {
     case PreProduction => 
-      slices.foreach(slice => htdirectors ! StartProduction(slice, subset))
+      slices.foreach(slice => graphdirectors ! StartProduction(slice, subset))
     case ProductionResult(u, v, value) => 
       outfile.println(u + " " + v + " " + value)
       counter += 1

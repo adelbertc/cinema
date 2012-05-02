@@ -23,10 +23,10 @@ class ProbGraphProducer(myGraph: Graph, slices: List[Vector[Int]], subset: Vecto
   import ProbGraphProducer.props
   val outfile = new PrintWriter(outputFilename)
   var counter = 0
-  val htdirectors = context.actorOf(props(myGraph, metric), name = "graphdirectors")
+  val graphdirectors = context.actorOf(props(myGraph, metric), name = "graphdirectors")
   def receive = {
     case PreProduction => 
-      slices.foreach(slice => htdirectors ! StartProduction(slice, subset))
+      slices.foreach(slice => graphdirectors ! StartProduction(slice, subset))
     case ProbProductionResult(u, v, value) => 
       outfile.print(u + " " + v)
       value.foreach(value => outfile.print(" " + value))
