@@ -7,7 +7,7 @@ import java.net.InetAddress
 
 
 class GraphGrip extends Bootable {
-  // Akka was giving me problems witht he default .getHostAddress()
+  // Akka was giving me problems with the default .getHostAddress()
   // For some reason, .getHostName() works, so that's why I'm doing this.
   val myHostName = InetAddress.getLocalHost().getHostName()
   val myConfig = """
@@ -41,6 +41,6 @@ class GraphGrip extends Bootable {
 object GraphGrip {
   def main(args: Array[String]) {
     new GraphGrip
-    println("Started Grip - waiting for messages...")
+    println("Started GraphGrip - waiting for messages...")
   }
 }
