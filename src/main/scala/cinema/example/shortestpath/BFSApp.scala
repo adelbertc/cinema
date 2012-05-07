@@ -25,7 +25,6 @@ object BFSApp {
       }
     }
     result.toMap
-    //immutable.HashMap() ++ result
   }
 
   def main(args: Array[String]) {
@@ -34,6 +33,6 @@ object BFSApp {
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
-    SingleSourceApp.calculate(G, args(1).toInt, shortestPath, args(2), args(3).toInt)
+    SingleSourcePairwiseApp.calculate(G, args(1).toInt, shortestPath, args(2), args(3).toInt)
   }
 }

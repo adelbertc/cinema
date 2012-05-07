@@ -13,4 +13,5 @@ case class StartProduction(graphSlice: Vector[Int], subset: Vector[Int])
 sealed trait ProductionResult
 case class PairwiseResult(u: Int, v: Int, result: Double) extends ProductionResult
 case class ProbPairwiseResult(u: Int, v: Int, result: List[Int]) extends ProductionResult
-case class SingleSourceResult(u: Int, result: scala.collection.immutable.Map[Int, Int]) extends ProductionResult
+case class SingleSourceResult(u: Int, result: Double) extends ProductionResult
+case class SingleSourcePairwiseResult(u: Int, result: scala.collection.immutable.Map[Int, Int]) extends ProductionResult
