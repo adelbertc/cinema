@@ -9,7 +9,7 @@ object DegreeApp {
 
   def main(args: Array[String]) {
     if (args.length != 4) {
-      println("Usage: scala HittingTimeApp [edgelist] [subset cardinality] [output filename] [# of servers]")
+      println("Usage: scala DegreeApp [edgelist] [subset cardinality] [output filename] [# of servers]")
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
