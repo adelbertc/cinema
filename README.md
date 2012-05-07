@@ -86,8 +86,8 @@ how many threads to use. A Director begins work when
 it receives an `StartProduction` message. As a
 director gets results for it's slice of the graph,
 it sends results to the Producer via a `ProductionResult`
-message (or `ProbProductionResult` if the implementation
-is non-deterministic).
+message (see `src/main/scala/cinema/actor/Actors.scala`
+for more details). 
 
 ###Grip
 The Grips are deployed on the remote machines 

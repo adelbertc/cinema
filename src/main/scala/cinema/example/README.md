@@ -52,12 +52,12 @@ def hittingTime(myGraph: Graph, u: Int, v: Int): List[Int] = {
 ```
 
 * Inside the `main` method, call the `calculate` method 
-inside the `ProbGraphApp` object (found in 
+inside the `ProbPairwiseApp` object (found in 
 `cinema.crew`) with the arguments: 
 `Graph`, number of vertices in graph to consider, 
 the metric implementation, the output filename, and the 
 number of servers to deploy over. Below is what the entire 
-program should look like. We use `ProbGraphApp` since we
+program should look like. We use `ProbPairwiseApp` since we
 want a `List[Int]` of the length of each random walk since
 random walks are non-deterministic, and we would like
 to keep each result for potential future use. (Note:
@@ -92,7 +92,7 @@ object HittingTimeApp {
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
-    ProbGraphApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
+    ProbPairwiseApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
   }
 }
 ```
