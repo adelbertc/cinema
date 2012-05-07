@@ -1,13 +1,13 @@
 package cinema.crew
 
 import akka.actor._
-import scala.collection.immutable.HashMap
+import scala.collection.immutable.Map
 import scala.collection.mutable.ListBuffer
 import cinema.actor._
 import cinema.graph.Graph
 
 object SingleSourceApp {
-  def calculate(myGraph: Graph, k: Int, metric: (Graph, Int) => HashMap[Int, Int], outputFilename: String, numOfServers: Int) {
+  def calculate(myGraph: Graph, k: Int, metric: (Graph, Int) => Map[Int, Int], outputFilename: String, numOfServers: Int) {
     val system = ActorSystem("SingleSourceApp")
     val vertexSubset = myGraph.getRandomVertices(k)
 
