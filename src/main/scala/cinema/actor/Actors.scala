@@ -9,5 +9,7 @@ abstract class StuntPerformer extends SerializableActor
 
 case object PreProduction
 case class StartProduction(graphSlice: Vector[Int], subset: Vector[Int])
-case class ProductionResult(u: Int, v: Int, result: Double)
-case class ProbProductionResult(u: Int, v: Int, result: List[Int])
+
+case class PairwiseResult(u: Int, v: Int, result: Double)
+case class ProbPairwiseResult(u: Int, v: Int, result: List[Int])
+case class SingleSourceResult(u: Int, result: scala.collection.immutable.HashMap[Int, Int])

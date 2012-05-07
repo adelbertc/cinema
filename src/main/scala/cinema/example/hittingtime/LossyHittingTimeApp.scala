@@ -25,6 +25,6 @@ object LossyHittingTimeApp {
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
-    GraphApp.calculate(G, args(1).toInt, lossyHittingTime, args(2), args(3).toInt)
+    PairwiseApp.calculate(G, args(1).toInt, lossyHittingTime, args(2), args(3).toInt)
   }
 }

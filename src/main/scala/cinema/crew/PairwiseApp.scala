@@ -5,9 +5,9 @@ import scala.collection.mutable.ListBuffer
 import cinema.actor._
 import cinema.graph.Graph
 
-object ProbGraphApp {
-  def calculate(myGraph: Graph, k: Int, metric: (Graph, Int, Int) => List[Int], outputFilename: String, numOfServers: Int) {
-    val system = ActorSystem("GraphApplication")
+object PairwiseApp {
+  def calculate(myGraph: Graph, k: Int, metric: (Graph, Int, Int) => Double, outputFilename: String, numOfServers: Int) {
+    val system = ActorSystem("PairwiseApp")
     val vertexSubset = myGraph.getRandomVertices(k)
 
     val slices = new ListBuffer[Vector[Int]]
@@ -23,7 +23,7 @@ object ProbGraphApp {
       }
       looper += 1
     }
-    val producer = system.actorOf(Props(new ProbGraphProducer(myGraph, slices.toList, vertexSubset, metric, outputFilename)), name = "graphproducer")
+    val producer = system.actorOf(Props(new PairwiseProducer(myGraph, slices.toList, vertexSubset, metric, outputFilename)), name = "graphproducer")
     println("Starting computation...")
     producer ! PreProduction
   }

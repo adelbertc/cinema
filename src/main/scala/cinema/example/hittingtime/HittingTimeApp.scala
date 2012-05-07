@@ -28,6 +28,6 @@ object HittingTimeApp {
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
-    ProbGraphApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
+    ProbPairwiseApp.calculate(G, args(1).toInt, hittingTime, args(2), args(3).toInt)
   }
 }
