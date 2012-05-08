@@ -1,4 +1,4 @@
-package cinema.example.shortestpath
+package cinema.example
 
 import scala.collection.immutable
 import scala.collection.mutable
@@ -6,7 +6,7 @@ import cinema.crew._
 import cinema.graph.Graph
 import cinema.graph.immutable.UndirectedGraph
 
-object BFSApp {
+object BFSShortestPathApp {
   def shortestPath(myGraph: Graph, u: Int): immutable.Map[Int, Int] = {
     val result = new mutable.HashMap[Int, Int]
     myGraph.getVertices.foreach(vertex => result(vertex) = -1)
@@ -29,7 +29,7 @@ object BFSApp {
 
   def main(args: Array[String]) {
     if (args.length != 4) {
-      println("Usage: scala BFSApp [edgelist] [subset cardinality] [output filename] [# of servers]")
+      println("Usage: scala BFSShortestPathApp [edgelist] [subset cardinality] [output filename] [# of servers]")
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
