@@ -1,7 +1,4 @@
 #Cinema Tutorial
-The example code below can be found under
-`cinema.example.hittingtime`.
-
 ##Instructions
 This example will provide a short walkthrough on how
 to distribute a hitting time calculation algorithm.

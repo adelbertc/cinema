@@ -18,7 +18,8 @@ class GraphGrip extends Bootable {
       remote {
         transport = "akka.remote.netty.NettyRemoteTransport"
         netty {
-          hostname = """ + "\"" + myHostName + "\"" + """
+          #hostname = """ + "\"" + myHostName + "\"" + """
+          hostname = "127.0.0.1"
           port = 2552
           message-frame-size = 500 MiB
         }

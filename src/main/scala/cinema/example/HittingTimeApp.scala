@@ -1,4 +1,4 @@
-package cinema.example.hittingtime
+package cinema.example
 
 import scala.collection.mutable.ListBuffer
 import cinema.crew._
@@ -24,7 +24,7 @@ object HittingTimeApp {
   
   def main(args: Array[String]) {
     if (args.length != 4) {
-      println("Usage: scala HittingTimeApplication [edgelist] [subset cardinality] [output filename] [# of servers]")
+      println("Usage: scala HittingTimeApp [edgelist] [subset cardinality] [output filename] [# of servers]")
       return
     }
     val G = new UndirectedGraph(args(0), parallel = true)
