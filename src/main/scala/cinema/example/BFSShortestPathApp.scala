@@ -7,8 +7,8 @@ import cinema.graph.Graph
 import cinema.graph.immutable.UndirectedGraph
 
 object BFSShortestPathApp {
-  def shortestPath(myGraph: Graph, u: Int): immutable.Map[Int, Int] = {
-    val result = new mutable.HashMap[Int, Int]
+  def shortestPath(myGraph: Graph, u: Int): immutable.Map[Int, Double] = {
+    val result = new mutable.HashMap[Int, Double]
     myGraph.getVertices.foreach(vertex => result(vertex) = -1)
     result(u) = 0
     

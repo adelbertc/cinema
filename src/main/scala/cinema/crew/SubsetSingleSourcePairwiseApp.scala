@@ -1,14 +1,14 @@
 package cinema.crew
 
 import akka.actor._
-import scala.collection.immutable.Map
 import scala.collection.mutable.ListBuffer
+import scala.collection.immutable.Map
 import cinema.actor._
 import cinema.graph.Graph
 
-object SingleSourcePairwiseApp {
+object SubsetSingleSourcePairwiseApp {
   def calculate(myGraph: Graph, k: Int, metric: (Graph, Int) => Map[Int, Double], outputFilename: String, numOfServers: Int) {
-    val system = ActorSystem("SingleSourcePairwiseApp")
+    val system = ActorSystem("SubsetProbPairwiseApp")
     val vertexSubset = myGraph.getRandomVertices(k)
 
     val slices = new ListBuffer[Vector[Int]]
@@ -24,7 +24,7 @@ object SingleSourcePairwiseApp {
       }
       looper += 1
     }
-    val producer = system.actorOf(Props(new SingleSourcePairwiseProducer(myGraph, slices.toList, vertexSubset, metric, outputFilename)), name = "graphproducer")
+    val producer = system.actorOf(Props(new SubsetSingleSourcePairwiseProducer(myGraph, slices.toList, metric, outputFilename)), name = "graphproducer")
     println("Starting computation...")
     producer ! PreProduction
   }
