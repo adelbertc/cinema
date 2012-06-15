@@ -19,17 +19,9 @@ and runs on three `Actor` subclasses: `GraphProducer`,
 `GraphDirector`, and `GraphGrip`. See below for
 more details.
 
-Currently, only algorithms that take in pairs of 
-vertices and return a floating point or integer 
-value work (i.e. shortest path). This is because most 
-of the algorithms I have dealt with thus far have 
-this property and hence are easily parallelized.
-Use `ProbGraphCrew` if your algorithm is non-deterministic
-(e.g. random walks), and `GraphCrew` if it is (e.g.
-shortest path).
-If you would like more, please let me know and I'll 
-see what I can do. Or better yet, fork Cinema and add 
-it yourself!
+If a current "crew" does not suit your needs,
+it is easy to implement one yourself - see the existing
+crews for guidance.
 
 Cinema is a work-in-progress and is not guarenteed
 to be fully stable. Please report any bugs, comments,
