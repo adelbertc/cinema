@@ -30,10 +30,13 @@ or suggestions to me at: `adelbertc at gmail dot com`
 An introductory tutorial on using Cinema can be found
 [here](https://github.com/adelbertc/Cinema/tree/master/src/main/scala/cinema/example).
 
-##Update (June 19, 2012)
+##Update (July 11, 2012)
 I am currently working on a new iteration/successor of Cinema
 with the general goal being to make trivially
-parallelizable code even easier to distribute! Stay tuned..
+parallelizable code even easier to distribute. Cinema
+is "complete" as it stands and will no longer be updated, 
+modulo any bugs I or someone else may notice. I will make
+another update once the next iteration is released.
 
 ##Compiling
 Cinema requires Scala 2.9 and Akka 2.0. I suggest
