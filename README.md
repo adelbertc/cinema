@@ -1,3 +1,9 @@
+##Update (December 12, 2012)
+Cinema is no longer an active project - it has been replaced with
+[Sabre](https://github.com/adelbertc/sabre). The motivation
+is the same (distributed in-memory graph processing), just under a
+different project name :-)
+
 #Cinema
 Cinema (work in progress) is a lightweight 
 Scala library for efficient and concurrent
@@ -29,14 +35,6 @@ or suggestions to me at: `adelbertc at gmail dot com`
 
 An introductory tutorial on using Cinema can be found
 [here](https://github.com/adelbertc/Cinema/tree/master/src/main/scala/cinema/example).
-
-##Update (July 11, 2012)
-I am currently working on a new iteration/successor of Cinema
-with the general goal being to make trivially
-parallelizable code even easier to distribute. Cinema
-is "complete" as it stands and will no longer be updated, 
-modulo any bugs I or someone else may notice. I will make
-another update once the next iteration is released.
 
 ##Compiling
 Cinema requires Scala 2.9 and Akka 2.0. I suggest
